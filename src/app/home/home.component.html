@@ -1,0 +1,76 @@
+<div>
+    <button (click)="firstPage()" mat-button> First</button>
+    <button (click)="previousPage()" mat-button> Previous</button>
+    <button (click)="nextPage()" mat-button> Next</button>
+    <button (click)="lastPage()" mat-button> Last</button>
+</div>
+<mat-card style="margin-top: 20px">
+    <mat-form-field appearence="fill">
+        <mat-label>{{!!categoryFilter ? categoryFilter.title : "Category"}}</mat-label>
+        <mat-select>
+            <mat-option (click)="selectCategoryFilter(null)" >--</mat-option>
+            <mat-option *ngFor="let category of categories" (click)="selectCategoryFilter(category)">
+                {{category.title}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearence="fill">
+        <mat-label>{{!!tagFilter ? tagFilter.title : "Tag"}}</mat-label>
+        <mat-select>
+            <mat-option (click)="selectTagFilter(null)">--</mat-option>
+            <mat-option *ngFor="let tag of tags" (click)="selectTagFilter(tag)">
+                {{tag.title}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dateFilter">
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+    <button mat-raised-button style="width: 150px; margin-left: 15px; margin-right: 15px;"
+        (click)="applyFilters()">Filter</button>
+</mat-card>
+<mat-spinner *ngIf=" !isLoaded">
+</mat-spinner>
+<div *ngIf="isLoaded" style="padding: 13px;">
+    <mat-card *ngIf="events.length === 0">No events found.</mat-card>
+    <mat-card *ngFor="let event of events" style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title style='margin-bottom: 20px;'>{{event.title}}</mat-card-title>
+            <mat-card-subtitle>
+                From: {{event.start_datetime}}
+            </mat-card-subtitle>
+            <mat-card-subtitle>
+                To: {{event.end_datetime}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style='margin-left: 20px;'>
+            <p>
+                {{event.description_short}}
+            </p>
+            <img style="height: 150px; width: 200px; margin-bottom: 10px;" src="{{ event.images[0].sizes.full.url }}" />
+            <div *ngIf="event.taxonomies">
+                <mat-card-subtitle style="margin-bottom: 0px;">
+                    Categories: <button *ngFor="let category of event.taxonomies.taxonomy_category" mat-button
+                        color="primary">{{category.title}}</button>
+                </mat-card-subtitle>
+                <mat-card-subtitle style="margin-bottom: 0px;">
+                    Tags: <button *ngFor="let tag of event.taxonomies.taxonomy_tag" mat-button
+                        color="primary">{{tag.title}}</button>
+                </mat-card-subtitle>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>
+<div>
+    <button (click)="firstPage()" mat-button> First</button>
+    <button (click)="previousPage()" mat-button> Previous</button>
+    <button (click)="nextPage()" mat-button> Next</button>
+    <button (click)="lastPage()" mat-button> Last</button>
+</div>

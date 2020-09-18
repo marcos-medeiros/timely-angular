@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "angular-example-3933b": {
+      "hosting": {
+        "angular-example": [
+          "angular-example-3933b"
+        ]
+      }
+    },
+    "timely-angular": {
+      "hosting": {
+        "timely-angular": [
+          "timely-angular"
+        ]
+      }
+    }
+  }
+}
