@@ -1,11 +1,17 @@
 # Timely Angular Project
 
-
+### Web version
 ![Web version](./img/web.jpg)
+
+### Mobile version
 ![Mobile version](./img/mobile.jpg)
+
+
+### Ipad version
 ![Ipad version](./img/ipad.jpg)
 
-[Live Demo](https://timely-angular.web.app/)
+### Live Demo
+[CLICK HERE](https://timely-angular.web.app/)
 
 ## Requirements and guidelines
 
